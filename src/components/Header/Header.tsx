@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import styles from "./Header.module.css";
-import RootState from "../../redux/store";
+import { RootState } from "../../redux/store";
 
 interface IHeaderProps {
-  username: string;
+  username?: string;
+  isLoggedIn?: boolean;
 }
 
 const Header: React.FC<IHeaderProps> = ({ username }) => {
@@ -15,7 +16,7 @@ const Header: React.FC<IHeaderProps> = ({ username }) => {
   );
 };
 
-const mapStateToProps = (state: typeof RootState) => ({
+const mapStateToProps = (state: RootState) => ({
   username: state.user.username.name,
 });
 

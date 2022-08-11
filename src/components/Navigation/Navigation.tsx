@@ -5,7 +5,7 @@ import TodosView from "../../views/TodosView";
 //import NotFoundView from "../../views/NotFoundView";
 
 interface INavProps {
-  isLoggedIn: boolean;
+  isLoggedIn?: boolean;
 }
 
 const Navigation: React.FC<INavProps> = ({ isLoggedIn }) => {
