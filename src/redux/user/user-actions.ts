@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 
-const login = createAction("user/login", (name) => {
+const login = createAction("user/login", (name: string) => {
   return {
     payload: {
       name,

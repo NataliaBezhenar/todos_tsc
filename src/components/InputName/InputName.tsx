@@ -1,18 +1,22 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import userActions from "../../redux/user/user-actions";
 import styles from "./InputName.module.css";
 
-const InputName = ({ onSubmit }) => {
+interface IInputNameProps {
+  onSubmit: Function;
+}
+
+const InputName: React.FC<IInputNameProps> = ({ onSubmit }) => {
   const [name, setName] = useState("");
   const history = useHistory();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name.trim().length === 0) {
       alert("Please enter your name");
@@ -35,8 +39,8 @@ const InputName = ({ onSubmit }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (abc) => dispatch(userActions.login(abc)),
+const mapDispatchToProps = (dispatch: any) => ({
+  onSubmit: (abc: string) => dispatch(userActions.login(abc)),
 });
 
 export default connect(null, mapDispatchToProps)(InputName);
