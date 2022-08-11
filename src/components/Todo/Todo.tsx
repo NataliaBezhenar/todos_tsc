@@ -1,9 +1,19 @@
-import React, { useRef } from "react";
+import { useRef, FC, MouseEventHandler, ChangeEventHandler } from "react";
 import styles from "./Todo.module.css";
 import { connect } from "react-redux";
 import todosActions from "../../redux/todos/todos-actions";
+import { AppDispatch, RootState } from "../../redux/store";
 
-const Todo = ({
+interface ITodo {
+  completed: boolean;
+  onToggleCompleted: ChangeEventHandler;
+  onDelete: MouseEventHandler;
+  onEditTodo: Function;
+  text: string;
+  id: string;
+}
+
+const Todo: FC<ITodo> = ({
   completed,
   onToggleCompleted,
   onDelete,
@@ -11,18 +21,23 @@ const Todo = ({
   text,
   id,
 }) => {
-  const inputRef = useRef(true);
+  const inputRef = useRef<HTMLTextAreaElement | null | boolean>(null);
+  // const inputRef: React.RefObject<boolean | HTMLTextAreaElement> =
+  //   useRef(false);
+  const curr = inputRef.current as HTMLTextAreaElement;
 
+  //
   const changeFocus = () => {
-    inputRef.current.disabled = false;
-    inputRef.current.focus();
+    curr.disabled = false;
+    curr.focus();
   };
 
-  const update = (message) => {
+  const update = (message: string) => {
     if (message.trim() !== "") {
       onEditTodo({ id, message });
     }
-    inputRef.current.disabled = true;
+
+    curr.disabled = true;
   };
 
   return (
@@ -39,7 +54,7 @@ const Todo = ({
           ref={inputRef}
           disabled={inputRef}
           defaultValue={text}
-          onBlur={() => update(inputRef.current.value)}
+          onBlur={() => update(curr.value)}
         />
       </div>
       <div className={styles["todo-btns-group"]}>
@@ -62,12 +77,13 @@ const Todo = ({
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   todos: state.todos.items,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onEditTodo: (obj) => dispatch(todosActions.editTodo(obj)),
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  onEditTodo: (obj: { id: number; message: string }) =>
+    dispatch(todosActions.editTodo(obj)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Todo);
