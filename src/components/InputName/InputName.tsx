@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import userActions from "../../redux/user/user-actions";
 import styles from "./InputName.module.css";
+import { AppDispatch } from "../../redux/store";
 
 interface IInputNameProps {
   onSubmit: Function;
@@ -39,8 +40,8 @@ const InputName: React.FC<IInputNameProps> = ({ onSubmit }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch: any) => ({
-  onSubmit: (abc: string) => dispatch(userActions.login(abc)),
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  onSubmit: (newName: string) => dispatch(userActions.login(newName)),
 });
 
 export default connect(null, mapDispatchToProps)(InputName);

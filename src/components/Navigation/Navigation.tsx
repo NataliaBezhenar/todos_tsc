@@ -1,5 +1,6 @@
 import { Route, Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import { RootState } from "../../redux/store";
 import HomeView from "../../views/HomeView";
 import TodosView from "../../views/TodosView";
 //import NotFoundView from "../../views/NotFoundView";
@@ -9,7 +10,6 @@ interface INavProps {
 }
 
 const Navigation: React.FC<INavProps> = ({ isLoggedIn }) => {
-  console.log(isLoggedIn);
   return (
     <>
       <Switch>
@@ -23,7 +23,7 @@ const Navigation: React.FC<INavProps> = ({ isLoggedIn }) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootState) => ({
   isLoggedIn: state.user.username.isLoggedIn,
 });
 
