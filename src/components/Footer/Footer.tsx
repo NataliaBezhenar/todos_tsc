@@ -1,6 +1,11 @@
+import { ReactNode, FC } from "react";
 import styles from "./Footer.module.css";
 
-export default function Footer({ children }) {
+interface IFooterProps {
+  children: ReactNode;
+}
+
+const Footer: FC<IFooterProps> = ({ children }) => {
   return (
     <footer>
       <div>{children}</div>
@@ -19,4 +24,5 @@ export default function Footer({ children }) {
       </a>
     </footer>
   );
-}
+};
+export default Footer;
