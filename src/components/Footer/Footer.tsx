@@ -2,7 +2,7 @@ import { ReactNode, FC } from "react";
 import styles from "./Footer.module.css";
 
 interface IFooterProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const Footer: FC<IFooterProps> = ({ children }) => {
