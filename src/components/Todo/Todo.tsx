@@ -1,4 +1,9 @@
-import { useRef, FC, MouseEventHandler, ChangeEventHandler } from "react";
+import React, {
+  useRef,
+  FC,
+  MouseEventHandler,
+  ChangeEventHandler,
+} from "react";
 import styles from "./Todo.module.css";
 import { connect } from "react-redux";
 import todosActions from "../../redux/todos/todos-actions";
@@ -21,24 +26,21 @@ const Todo: FC<ITodo> = ({
   text,
   id,
 }) => {
-  const inputRef = useRef<HTMLTextAreaElement | null | boolean>(null);
-  // const inputRef: React.RefObject<boolean | HTMLTextAreaElement> =
-  //   useRef(false);
-  const curr = inputRef.current as HTMLTextAreaElement;
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  //
   const changeFocus = () => {
-    curr.disabled = false;
-    curr.focus();
+    (inputRef.current as HTMLTextAreaElement).disabled = false;
+    (inputRef.current as HTMLTextAreaElement).focus();
   };
 
   const update = (message: string) => {
     if (message.trim() !== "") {
       onEditTodo({ id, message });
     }
-
-    curr.disabled = true;
+    (inputRef.current as HTMLTextAreaElement).disabled = true;
   };
+
+  let isInputRef: boolean = inputRef ? true : false;
 
   return (
     <>
@@ -52,9 +54,9 @@ const Todo: FC<ITodo> = ({
         <textarea
           className={styles.todo__text}
           ref={inputRef}
-          disabled={inputRef}
+          disabled={isInputRef}
           defaultValue={text}
-          onBlur={() => update(curr.value)}
+          onBlur={() => update((inputRef.current as HTMLTextAreaElement).value)}
         />
       </div>
       <div className={styles["todo-btns-group"]}>
