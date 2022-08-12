@@ -6,7 +6,6 @@ interface IModal {
   isShowing: boolean;
   hide: React.MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
-  type?: any;
 }
 
 const Modal: React.FC<IModal> = ({ isShowing, hide, children }) =>

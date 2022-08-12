@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { RootState } from "../../redux/store";
 import HomeView from "../../views/HomeView";
 import TodosView from "../../views/TodosView";
-//import NotFoundView from "../../views/NotFoundView";
+import NotFoundView from "../../views/NotFoundView";
 
 interface INavProps {
   isLoggedIn?: boolean;
@@ -17,7 +17,7 @@ const Navigation: React.FC<INavProps> = ({ isLoggedIn }) => {
         <Route exact path="/todos">
           {!isLoggedIn ? <Redirect to="/" /> : <TodosView />}
         </Route>
-        ;
+        <Route component={NotFoundView} />;
       </Switch>
     </>
   );
@@ -28,5 +28,3 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 export default connect(mapStateToProps, null)(Navigation);
-
-/* <Route component={NotFoundView} /> */

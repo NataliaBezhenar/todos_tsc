@@ -1,10 +1,28 @@
-import React from "react";
 import { connect } from "react-redux";
 import Todo from "../Todo";
 import todosActions from "../../redux/todos/todos-actions";
 import styles from "./TodoList.module.css";
+import { RootState, AppDispatch } from "../../redux/store";
 
-const TodoList = ({ todos, onDeleteTodo, onToggleCompleted, onEditTodo }) => {
+type TodoType = {
+  id: number;
+  text: string;
+  completed: boolean;
+};
+
+interface ITodoList {
+  todos: TodoType[];
+  onDeleteTodo: Function;
+  onToggleCompleted: Function;
+  onEditTodo: Function;
+}
+
+const TodoList: React.FC<ITodoList> = ({
+  todos,
+  onDeleteTodo,
+  onToggleCompleted,
+  //onEditTodo,
+}) => {
   return (
     <ul className={styles.todoList}>
       {todos.map(({ id, text, completed }) => {
@@ -23,7 +41,7 @@ const TodoList = ({ todos, onDeleteTodo, onToggleCompleted, onEditTodo }) => {
               id={id}
               onToggleCompleted={() => onToggleCompleted(id)}
               onDelete={() => onDeleteTodo(id)}
-              onEdit={() => onEditTodo(id)}
+              //onEdit={() => onEditTodo(id)}
             />
           </li>
         );
@@ -32,7 +50,7 @@ const TodoList = ({ todos, onDeleteTodo, onToggleCompleted, onEditTodo }) => {
   );
 };
 
-const getVisibleTodos = (allTodos, filter) => {
+const getVisibleTodos = (allTodos: TodoType[], filter: string) => {
   switch (filter) {
     case "incomplete":
       return allTodos.filter((todo) => !todo.completed);
@@ -43,14 +61,14 @@ const getVisibleTodos = (allTodos, filter) => {
   }
 };
 
-const mapStateToProps = ({ todos: { items, filter } }) => ({
-  todos: getVisibleTodos(items, filter),
+const mapStateToProps = (state: RootState) => ({
+  todos: getVisibleTodos(state.todos.items, state.todos.filter),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onDeleteTodo: (id) => dispatch(todosActions.deleteTodo(id)),
-  onToggleCompleted: (id) => dispatch(todosActions.toggleCompleted(id)),
-  onEditTodo: (id) => dispatch(todosActions.editTodo(id)),
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  onDeleteTodo: (id: number) => dispatch(todosActions.deleteTodo(id)),
+  onToggleCompleted: (id: number) => dispatch(todosActions.toggleCompleted(id)),
+  onEditTodo: (id: number) => dispatch(todosActions.editTodo(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

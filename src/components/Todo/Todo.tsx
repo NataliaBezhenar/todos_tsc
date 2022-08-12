@@ -1,9 +1,4 @@
-import React, {
-  useRef,
-  FC,
-  MouseEventHandler,
-  ChangeEventHandler,
-} from "react";
+import { useRef, FC, MouseEventHandler, ChangeEventHandler } from "react";
 import styles from "./Todo.module.css";
 import { connect } from "react-redux";
 import todosActions from "../../redux/todos/todos-actions";
@@ -13,9 +8,9 @@ interface ITodo {
   completed: boolean;
   onToggleCompleted: ChangeEventHandler;
   onDelete: MouseEventHandler;
-  onEditTodo: Function;
+  onEditTodo: any;
   text: string;
-  id: string;
+  id: number;
 }
 
 const Todo: FC<ITodo> = ({
