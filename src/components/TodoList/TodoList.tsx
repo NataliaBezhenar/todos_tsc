@@ -21,7 +21,6 @@ const TodoList: React.FC<ITodoList> = ({
   todos,
   onDeleteTodo,
   onToggleCompleted,
-  //onEditTodo,
 }) => {
   return (
     <ul className={styles.todoList}>
@@ -41,7 +40,6 @@ const TodoList: React.FC<ITodoList> = ({
               id={id}
               onToggleCompleted={() => onToggleCompleted(id)}
               onDelete={() => onDeleteTodo(id)}
-              //onEdit={() => onEditTodo(id)}
             />
           </li>
         );
