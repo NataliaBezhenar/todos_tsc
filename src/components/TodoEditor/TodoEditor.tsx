@@ -10,7 +10,7 @@ interface ITodoEditor {
 }
 
 const TodoEditor: React.FC<ITodoEditor> = ({ onSubmit, onSave }) => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.currentTarget.value);

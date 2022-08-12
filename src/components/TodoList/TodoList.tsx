@@ -3,12 +3,7 @@ import Todo from "../Todo";
 import todosActions from "../../redux/todos/todos-actions";
 import styles from "./TodoList.module.css";
 import { RootState, AppDispatch } from "../../redux/store";
-
-type TodoType = {
-  id: number;
-  text: string;
-  completed: boolean;
-};
+import { TodoType } from "../../redux/types/todoType";
 
 interface ITodoList {
   todos: TodoType[];

@@ -1,12 +1,7 @@
 import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
 import actions from "./todos-actions";
-
-type TodoType = {
-  id: number;
-  text: string;
-  completed: boolean;
-};
+import { TodoType } from "../../redux/types/todoType";
 
 const items = createReducer([], {
   [actions.addTodo]: (

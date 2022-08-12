@@ -10,7 +10,7 @@ interface IInputNameProps {
 }
 
 const InputName: React.FC<IInputNameProps> = ({ onSubmit }) => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState<string>("");
   const history = useHistory();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
