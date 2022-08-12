@@ -1,4 +1,4 @@
-import { Button } from "../Button/Button";
+import { Button } from "../Button";
 import useModal from "../Modal/useModal";
 import Filter from "../TodoFilter";
 import Modal from "../Modal";
