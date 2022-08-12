@@ -2,9 +2,10 @@ import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
 
 interface IUserAction {
-  type: "user/login";
+  type: string;
   payload: { name: string; isLoggedIn: boolean };
 }
+
 interface IUser {
   username: {
     name: string;

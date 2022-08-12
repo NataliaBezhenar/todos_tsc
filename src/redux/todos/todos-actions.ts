@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 
-const addTodo = createAction("todos/add", (text) => {
+const addTodo = createAction("todos/add", (text: string) => {
   return {
     payload: { id: Math.random(), text, completed: false },
   };

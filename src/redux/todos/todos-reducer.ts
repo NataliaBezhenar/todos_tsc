@@ -11,15 +11,15 @@ type TodoType = {
 const items = createReducer([], {
   [actions.addTodo]: (
     state: [],
-    action: { type: "todos/add"; payload: TodoType }
+    action: { type: string; payload: TodoType }
   ) => [...state, action.payload],
   [actions.deleteTodo]: (
     state: [],
-    action: { type: "todos/delete"; payload: number }
+    action: { type: string; payload: number }
   ) => state.filter(({ id }) => id !== action.payload),
   [actions.toggleCompleted]: (
     state: [],
-    action: { type: "todos/toggleCompleted"; payload: number }
+    action: { type: string; payload: number }
   ) =>
     state.map((todo: TodoType) =>
       todo.id === action.payload
@@ -28,7 +28,7 @@ const items = createReducer([], {
     ),
   [actions.editTodo]: (
     state: [],
-    action: { type: "todos/editTodo"; payload: { id: number; message: string } }
+    action: { type: string; payload: { id: number; message: string } }
   ) => {
     state.map((todo: TodoType) => {
       if (todo.id === action.payload.id) {
@@ -40,14 +40,14 @@ const items = createReducer([], {
   },
 });
 
-interface IFiterAction {
-  type: "todos/changeFilter";
-  payload: string;
-}
-
 const filter = createReducer("", {
-  [actions.changeFilter]: (state: string, action: IFiterAction) =>
-    action.payload,
+  [actions.changeFilter]: (
+    state: string,
+    action: {
+      type: string;
+      payload: string;
+    }
+  ) => action.payload,
 });
 
 export default combineReducers({ items, filter });
