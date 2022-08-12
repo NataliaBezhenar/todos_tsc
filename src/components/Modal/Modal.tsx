@@ -2,7 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./Modal.css";
 
-const Modal = ({ isShowing, hide, children, type }) =>
+interface IModal {
+  isShowing: boolean;
+  hide: React.MouseEventHandler<HTMLButtonElement>;
+  children: React.ReactNode;
+  type?: any;
+}
+
+const Modal: React.FC<IModal> = ({ isShowing, hide, children }) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>

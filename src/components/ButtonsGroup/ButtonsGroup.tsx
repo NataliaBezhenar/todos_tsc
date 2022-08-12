@@ -5,7 +5,7 @@ import Modal from "../Modal";
 import TodoEditor from "../TodoEditor";
 import styles from "./ButtonGroup.module.css";
 
-const ButtonsGroup = () => {
+const ButtonsGroup: React.FC = () => {
   const { toggle, isShowing } = useModal();
 
   return (

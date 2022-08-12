@@ -1,7 +1,13 @@
-import React from "react";
+import { FC, ReactNode } from "react";
 import styles from "./Button.module.css";
 
-function Button({ type, children, ...rest }) {
+interface IButton {
+  children: ReactNode;
+  rest?: any;
+  onClick: () => void;
+}
+
+const Button: FC<IButton> = ({ children, ...rest }) => {
   return (
     <button
       type="submit"
@@ -11,9 +17,9 @@ function Button({ type, children, ...rest }) {
       {children}
     </button>
   );
-}
+};
 
-function SelectButton({ children, id, ...rest }) {
+const SelectButton: FC<IButton> = ({ children, ...rest }) => {
   return (
     <select
       className={`${styles.button} ${styles["button__select"]}`}
@@ -22,6 +28,6 @@ function SelectButton({ children, id, ...rest }) {
       {children}
     </select>
   );
-}
+};
 
 export { SelectButton, Button };
