@@ -4,7 +4,9 @@ import styles from "./Button.module.css";
 interface IButton {
   children: ReactNode;
   rest?: any;
-  onClick: () => void;
+  onClick?: () => void;
+  onChange?: React.ChangeEventHandler<any>;
+  value?: string;
 }
 
 const Button: FC<IButton> = ({ children, ...rest }) => {
