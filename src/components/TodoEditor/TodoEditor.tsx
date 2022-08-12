@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import todosActions from "../../redux/todos/todos-actions";
 import styles from "./TodoEditor.module.css";
+import { AppDispatch } from "../../redux/store";
 
-const TodoEditor = ({ onSubmit, onSave }) => {
+interface ITodoEditor {
+  onSubmit: Function;
+  onSave: Function;
+}
+
+const TodoEditor: React.FC<ITodoEditor> = ({ onSubmit, onSave }) => {
   const [message, setMessage] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.currentTarget.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (message.trim() !== "") {
       onSubmit(message);
@@ -36,8 +42,8 @@ const TodoEditor = ({ onSubmit, onSave }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (text) => dispatch(todosActions.addTodo(text)),
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  onSubmit: (text: string) => dispatch(todosActions.addTodo(text)),
 });
 
 export default connect(null, mapDispatchToProps)(TodoEditor);

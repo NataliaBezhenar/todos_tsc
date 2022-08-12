@@ -1,5 +1,3 @@
-import React from "react";
-
 import Container from "../components/Container";
 import TodoList from "../components/TodoList";
 import Stats from "../components/Stats";
@@ -12,17 +10,14 @@ const TodosView = () => {
     <>
       <Container>
         <Header />
-        <TodoList />
         <ButtonsGroup />
+        <TodoList />
       </Container>
-      <Footer></Footer>
+      <Footer>
+        <Stats />
+      </Footer>
     </>
   );
 };
 
 export default TodosView;
-
-//
-// <TodoList /><Stats />
-
-//container

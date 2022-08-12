@@ -4,9 +4,9 @@ import { RootState } from "../../redux/store";
 import styles from "./Stats.module.css";
 
 interface IStats {
-  total: number;
-  completed: number;
-  incompleted: number;
+  total?: number;
+  completed?: number;
+  incompleted?: number;
 }
 
 const Stats: React.FC<IStats> = ({ total, completed, incompleted }) => (
