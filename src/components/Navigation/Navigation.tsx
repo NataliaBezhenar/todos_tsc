@@ -24,7 +24,7 @@ const Navigation: React.FC<INavProps> = ({ isLoggedIn }) => {
 };
 
 const mapStateToProps = (state: RootState) => ({
-  isLoggedIn: state.user.username.isLoggedIn,
+  isLoggedIn: state.user.isLoggedIn,
 });
 
 export default connect(mapStateToProps, null)(Navigation);

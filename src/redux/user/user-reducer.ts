@@ -7,21 +7,17 @@ interface IUserAction {
 }
 
 interface IUser {
-  username: {
-    name: string;
-    isLoggedIn: boolean;
-  };
+  name: string;
+  isLoggedIn: boolean;
 }
 
 const initialState: IUser = {
-  username: {
-    name: "",
-    isLoggedIn: false,
-  },
+  name: "",
+  isLoggedIn: false,
 };
 
-const username = createReducer(initialState, {
+const user = createReducer(initialState, {
   "user/login": (state: {}, action: IUserAction) => action.payload,
 });
 
-export default combineReducers({ username });
+export default combineReducers({ user });
