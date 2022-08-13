@@ -28,5 +28,3 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 export default connect(mapStateToProps, null)(Navigation);
-
-/* <Route component={NotFoundView} /> */

@@ -87,26 +87,6 @@ describe("test todolist reducers", () => {
   });
 });
 
-/*
-// import {TodosActionTypes} from "../types/actionsTypes";
-// import {todosReducer, TodosState} from "../redux/reducers/todosReducer";
-
-// const currentState: TodosState = {
-//     todos: [
-//         {id: 1, title: "task", completed: true},
-//         {id: 2, title: "another task", completed: false},
-//         {id: 3, title: "one more task", completed: true},
-//     ],
-//     name: "",
-//     isLogin: false,
-//     selectedTodos: "all"
-// }
-// describe("validateTodos", ()=>{
-//    
-
-//    
-
-
 //     test("login", ()=>{
 //         expect(todosReducer(currentState,{type: TodosActionTypes.ADD_LOGIN, payload: "user name"})).toEqual({
 //                 todos: [
@@ -122,4 +102,3 @@ describe("test todolist reducers", () => {
 //     })
 
 //
-*/
