@@ -86,19 +86,3 @@ describe("test todolist reducers", () => {
     });
   });
 });
-
-//     test("login", ()=>{
-//         expect(todosReducer(currentState,{type: TodosActionTypes.ADD_LOGIN, payload: "user name"})).toEqual({
-//                 todos: [
-//                     {id: 1, title: "task", completed: true},
-//                     {id: 2, title: "another task", completed: false},
-//                     {id: 3, title: "one more task", completed: true},
-//                 ],
-//                 name: "user name",
-//                 isLogin: true,
-//                 selectedTodos: "all"
-//             }
-//         )
-//     })
-
-//
