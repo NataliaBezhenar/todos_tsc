@@ -24,7 +24,9 @@ const Navigation: React.FC<INavProps> = ({ isLoggedIn }) => {
 };
 
 const mapStateToProps = (state: RootState) => ({
-  isLoggedIn: state.user.isLoggedIn,
+  isLoggedIn: state.user.username.isLoggedIn,
 });
 
 export default connect(mapStateToProps, null)(Navigation);
+
+/* <Route component={NotFoundView} /> */

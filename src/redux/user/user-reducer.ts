@@ -16,8 +16,8 @@ const initialState: IUser = {
   isLoggedIn: false,
 };
 
-const user = createReducer(initialState, {
+const username = createReducer(initialState, {
   "user/login": (state: {}, action: IUserAction) => action.payload,
 });
 
-export default combineReducers({ user });
+export default combineReducers({ username });
