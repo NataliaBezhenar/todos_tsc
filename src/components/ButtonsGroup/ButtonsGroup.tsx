@@ -7,13 +7,11 @@ import styles from "./ButtonGroup.module.css";
 
 const ButtonsGroup: React.FC = () => {
   const { toggle, isShowing } = useModal();
-
   return (
-    <div className={styles.buttongroup}>
+    <div className={styles.buttonGroup}>
       <Button onClick={toggle} aria-label="Add todo">
         Add todo
       </Button>
-
       <Filter />
       <Modal isShowing={isShowing} hide={toggle}>
         <TodoEditor onSave={toggle} />
