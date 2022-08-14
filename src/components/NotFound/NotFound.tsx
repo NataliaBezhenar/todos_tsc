@@ -7,6 +7,7 @@ const NotFound: React.FC = () => {
     <>
       <p className={styles["not_found_text"]}>404 Page not found</p>
       <button
+        aria-label="Back to login page"
         className={styles["not_found_btn"]}
         onClick={() => {
           history.push("/");
