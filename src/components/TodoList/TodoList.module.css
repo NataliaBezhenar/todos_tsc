@@ -18,3 +18,13 @@
   width: 100%;
   justify-content: space-between;
 }
+
+.todoList__noTodosFoundText {
+  font-size: 2rem;
+  text-align: left;
+  color: #555;
+}
+
+.todoList__item--completed {
+  text-decoration: line-through;
+}

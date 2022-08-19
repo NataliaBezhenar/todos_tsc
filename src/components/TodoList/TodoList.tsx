@@ -4,6 +4,7 @@ import todosActions from "../../redux/todos/todos-actions";
 import styles from "./TodoList.module.css";
 import { RootState, AppDispatch } from "../../redux/store";
 import { TodoType } from "../../redux/types/todoType";
+import { ReactElement } from "react";
 
 interface ITodoList {
   todos: TodoType[];
@@ -17,30 +18,32 @@ const TodoList: React.FC<ITodoList> = ({
   onDeleteTodo,
   onToggleCompleted,
 }) => {
-  return (
-    <ul className={styles.todoList}>
-      {todos.map(({ id, text, completed }) => {
-        let style = "";
-        if (completed) {
-          style = "--completed";
-        }
-        return (
-          <li
-            key={id}
-            className={`${styles.todoList__item} ${styles.todoList__item}${style}`}
-          >
-            <Todo
-              text={text}
-              completed={completed}
-              id={id}
-              onToggleCompleted={() => onToggleCompleted(id)}
-              onDelete={() => onDeleteTodo(id)}
-            />
-          </li>
-        );
-      })}
-    </ul>
-  );
+  let todosContent: ReactElement[] = [
+    <p key={Math.random()} className={styles["todoList__noTodosFoundText"]}>
+      No todos found
+    </p>,
+  ];
+  if (todos.length > 0) {
+    todosContent = todos.map(({ id, text, completed }) => {
+      let style = "";
+      if (completed) {
+        style = "todoList__item--completed";
+      }
+      return (
+        <li key={id} className={`${styles.todoList__item} ${styles[style]} }`}>
+          <Todo
+            text={text}
+            completed={completed}
+            id={id}
+            onToggleCompleted={() => onToggleCompleted(id)}
+            onDelete={() => onDeleteTodo(id)}
+          />
+        </li>
+      );
+    });
+  }
+
+  return <ul className={styles.todoList}>{todosContent}</ul>;
 };
 
 const getVisibleTodos = (allTodos: TodoType[], filter: string) => {
