@@ -19,10 +19,11 @@
   justify-content: space-between;
 }
 
-.todoList__noTodosFoundText {
+.todoList__fallback {
   font-size: 2rem;
-  text-align: left;
+  text-align: center;
   color: #555;
+  padding: 10rem;
 }
 
 .todoList__item--completed {
