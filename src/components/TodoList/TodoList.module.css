@@ -26,6 +26,6 @@
   padding: 10rem;
 }
 
-.todoList__item--completed {
+.todoList__item.completed {
   text-decoration: line-through;
 }

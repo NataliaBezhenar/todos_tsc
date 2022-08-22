@@ -4,7 +4,6 @@ import todosActions from "../../redux/todos/todos-actions";
 import styles from "./TodoList.module.css";
 import { RootState, AppDispatch } from "../../redux/store";
 import { TodoType } from "../../redux/types/todoType";
-import { ReactElement } from "react";
 
 interface ITodoList {
   todos: TodoType[];
@@ -21,18 +20,15 @@ const TodoList: React.FC<ITodoList> = ({
   if (todos.length === 0) {
     return <h2 className={styles["todoList__fallback"]}>No todos found</h2>;
   }
-
   return (
     <ul className={styles.todoList}>
       {todos.map(({ id, text, completed }) => {
-        let style = "";
-        if (completed) {
-          style = "todoList__item--completed";
-        }
         return (
           <li
             key={id}
-            className={`${styles.todoList__item} ${styles[style]} }`}
+            className={`${styles.todoList__item} ${
+              completed && styles.completed
+            } }`}
           >
             <Todo
               text={text}
